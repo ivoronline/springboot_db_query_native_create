@@ -17,7 +17,7 @@ public class MyController {
   //================================================================
   @RequestMapping("SelectPerson")
   Person selectPerson() {
-    Person person = dbAccess.selectPersonByNameAge();
+    Person person = dbAccess.selectPerson();
     return person;
   }
 

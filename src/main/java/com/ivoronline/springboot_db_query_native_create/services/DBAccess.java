@@ -13,9 +13,9 @@ public class DBAccess {
   @PersistenceContext EntityManager entityManager;
 
   //================================================================
-  // SELECT PERSON BY NAME AGE
+  // SELECT PERSON
   //================================================================
-  public Person selectPersonByNameAge() {
+  public Person selectPerson() {
 
     //CREATE QUERY
     String select = "SELECT * FROM Person WHERE name = :name AND age = :age";
@@ -39,7 +39,7 @@ public class DBAccess {
 
     //CREATE QUERY
     String insert = "INSERT INTO PERSON (name, age) VALUES (:name, :age)";
-    Query  query  = entityManager.createNativeQuery(insert, Person.class);
+    Query  query  = entityManager.createNativeQuery(insert);
            query.setParameter("name", "John");
            query.setParameter("age" , 20);
 
@@ -59,7 +59,7 @@ public class DBAccess {
 
     //CREATE QUERY
     String update = "UPDATE PERSON SET AGE = :newAge WHERE NAME = :name";
-    Query  query  = entityManager.createNativeQuery(update, Person.class);
+    Query  query  = entityManager.createNativeQuery(update);
            query.setParameter("name"  , "John");
            query.setParameter("newAge", 200);
 
@@ -79,7 +79,7 @@ public class DBAccess {
 
     //CREATE QUERY
     String delete = "DELETE FROM PERSON WHERE NAME = :name";
-    Query  query  = entityManager.createNativeQuery(delete, Person.class);
+    Query  query  = entityManager.createNativeQuery(delete);
            query.setParameter("name"  , "John");
 
     //INSERT PERSON
